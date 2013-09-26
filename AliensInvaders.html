@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Denny Schuldt">
+		<meta name="description" content="">		
+		<title>Galaxy DAW</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body onload="init()">
+		<section>			
+			<center>
+				<div id="background">					
+					<canvas id="space"	height="600px" width="920px"></canvas>				
+					<canvas id="ship" height="600px" width="920px"></canvas>
+					<canvas id="shoot" height="600px" width="920px"></canvas>
+					<canvas id="invaders" height="600px" width="920px"></canvas>
+					<canvas id="score" height="600px" width="920px"></canvas>
+					<canvas id="destroyed" height="600px" width="920px"></canvas>
+					<canvas id="lives" height="600px" width="920px"></canvas>
+				</div>
+			</center>
+			<script type="text/javascript" src="js/functions.js"></script>
+			<div id="gameover_pre"></div>
+			<div id="winner_pre"></div>
+			<div id="winner">
+				<center>
+					<p>Congrats!</p>
+					<h4>You win! :D</h4>
+				</center>
+			</div>
+			<div id="gameover">
+				<center>
+					<p>Game<br>Over</p>
+					<h4>Press *Space* to continue...</h4>
+				</center>
+			</div>
+		</section>
+	</body>
+</html>
