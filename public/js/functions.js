@@ -4,6 +4,7 @@
 	var gameover, showEnd, moving, left, right, winner; //Booleans
 	var shootX, shootY, shooting, gridX, gridY, animationTime, currentAnimation;
 	var LAST_LEFT, LAST_RIGHT, LAST_VERTICAL, WIDTH, HEIGHT;
+	var col11 = false;
 	
 	var invaders = [
 			[true,0,0,'squid'],[true,0,0,'squid'],[true,0,0,'squid'],[true,0,0,'squid'],[true,0,0,'squid'],
@@ -57,7 +58,8 @@
 		if(lives != 0){
 			if(right) gridX += 8;
 			if(left) gridX -= 8;
-			evaluateExtremes();
+			if(gridX >= LAST_RIGHT - 60)
+				evaluateExtremes();
 			if(gridX == LAST_RIGHT || gridX <= LAST_LEFT){
 				gridY += 16;
 				left = !left;
@@ -108,15 +110,28 @@
 	
 	function evaluateExtremes(){
 		//Still implementing this..
+		if(col11) return false;
 		console.log("Init: " + LAST_RIGHT);
-		for(var i=10; i>0; i--){
-			for(var j=0; j<5; j++){
-				if(invaders[i][j][0])
-					return LAST_RIGHT;
-			}
-			LAST_RIGHT += 60;
-			console.log("Other: " + LAST_RIGHT);
+		if(invaders[10][0]){
+			return LAST_RIGHT;
 		}
+		if(invaders[21][0]){
+			return LAST_RIGHT;
+		}
+		if(invaders[32][0]){
+			return LAST_RIGHT;
+		}
+		if(invaders[43][0]){
+			return LAST_RIGHT;
+		}
+		if(invaders[54][0]){
+			return LAST_RIGHT;
+		}
+		if(!col11){
+			LAST_RIGHT += 60;
+			col11 = true;
+		}
+		console.log("Final: " + LAST_RIGHT);
 	}
 	
 	function recalculate(){		
@@ -407,6 +422,7 @@
 					if(invaders[invader][3] == "squid"){
 						if((shootX >= coordx)&&(shootX <= coordx+32)){
 							invaders[invader][0] = false;
+							console.log("indice: "+invader+ " | value: "+invaders[invader][0]);
 							clear = true;
 							score += 10;
 						}
@@ -414,6 +430,7 @@
 					if(invaders[invader][3] == "crab"){
 						if((shootX >= coordx)&&(shootX <= coordx+44)){
 							invaders[invader][0] = false;
+							console.log("indice: "+invader+ " | value: "+invaders[invader][0]);
 							clear = true;
 							score += 30;
 						}
@@ -421,6 +438,7 @@
 					if(invaders[invader][3] == "octopus"){
 						if((shootX >= coordx)&&(shootX <= coordx+48)){
 							invaders[invader][0] = false;
+							console.log("indice: "+invader+ " | value: "+invaders[invader][0]);
 							clear = true;
 							score += 20;
 						}
